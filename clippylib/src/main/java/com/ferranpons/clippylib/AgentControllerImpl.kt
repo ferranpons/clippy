@@ -29,13 +29,13 @@ import timber.log.Timber
 
 class AgentControllerImpl(override val agentType: AgentType, private val context: Context, private val agentService: AgentService) : AgentController {
     override var isMute: Boolean = false
-    private val floatingView: FloatingView
+    private val floatingView: FloatingView = FloatingView(context)
 
-    private var frameLayout: FrameLayout? = null
+    private var frameLayout: FrameLayout = FrameLayout(context)
     private var imageLayer: MutableList<ImageView>? = null
     private var progressBar: ProgressBar? = null
 
-    private val handler: Handler
+    private val handler: Handler = Handler()
     private var animationRunnable: AnimationRunnable? = null
 
     private val animationIsRunning = AtomicBoolean(true)
@@ -70,8 +70,6 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
 
 
     init {
-        this.floatingView = FloatingView(context)
-        this.handler = Handler()
 
         initView()
         loadAgentData.execute(agentType)
@@ -162,8 +160,8 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
         frameLayout = FrameLayout(context)
         progressBar = ProgressBar(context)
 
-        frameLayout!!.addView(progressBar)
-        floatingView.addView(frameLayout!!)
+        frameLayout.addView(progressBar)
+        floatingView.addView(frameLayout)
     }
 
     private fun displayAgent(agentOption: O<UiAgent>) {

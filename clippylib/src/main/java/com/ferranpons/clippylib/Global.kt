@@ -11,7 +11,7 @@ import timber.log.Timber
 import java.lang.RuntimeException
 
 
-enum class Global private constructor() {
+enum class Global {
     INSTANCE;
 
     private var agentSource: AgentSource? = null

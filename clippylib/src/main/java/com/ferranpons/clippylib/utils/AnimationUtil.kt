@@ -40,14 +40,16 @@ object AnimationUtil {
             if (branches < MAX_BRANCHES) {
                 var rnd = random.nextInt(100)
 
-                for (uiBranch in frame.branches) {
-                    if (rnd <= uiBranch.weight) {
-                        i = uiBranch.frameIndex
-                        frame = frames[i]
-                        branches++
-                        break
+                if (frame.branches != null) {
+                    for (uiBranch in frame.branches!!) {
+                        if (rnd <= uiBranch.weight) {
+                            i = uiBranch.frameIndex
+                            frame = frames[i]
+                            branches++
+                            break
+                        }
+                        rnd -= uiBranch.weight
                     }
-                    rnd -= uiBranch.weight
                 }
             }
             uiFrames.add(frame)

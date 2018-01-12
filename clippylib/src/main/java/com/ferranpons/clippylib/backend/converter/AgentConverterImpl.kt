@@ -54,7 +54,7 @@ class AgentConverterImpl(agentType: AgentType) : AgentConverter {
                     frame.duration,
                     convertImageListToId(frame.images, agent),
                     frame.exitBranch,
-                    convertBranchingToUiBranches(frame.branching)!!,
+                    convertBranchingToUiBranches(frame.branching),
                     if (frame.sound != null) agentMapping.soundMapping[frame.sound - 1] else null
             )
             uiAnimationList.add(uiFrame)

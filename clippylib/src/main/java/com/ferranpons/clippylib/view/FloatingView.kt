@@ -2,7 +2,7 @@ package com.ferranpons.clippylib.view
 
 import android.content.Context
 import android.graphics.PixelFormat
-import android.os.Handler
+import android.os.*
 import android.view.GestureDetector
 import android.view.Gravity
 import android.view.MotionEvent
@@ -38,11 +38,23 @@ class FloatingView(context: Context) : FrameLayout(context), View.OnTouchListene
                 WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            layoutParams.type = WindowManager.LayoutParams.TYPE_TOAST
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            layoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+        {
+            layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
+        }
+
         this.layoutParams.gravity = Gravity.CENTER
 
         this.setOnTouchListener(this)
 
-        this.windowManager.addView(this, layoutParams)
+        //this.windowManager.addView(this, layoutParams)
     }
 
     fun kill() {
