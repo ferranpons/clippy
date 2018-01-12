@@ -1,3 +1,23 @@
 <resources>
   <string name="clippy_app_name">Clippy Library</string>
+
+  <string name="clippy_notification_action_stop">Stop</string>
+  <string name="clippy_notification_action_start">Start</string>
+  <string name="clippy_notification_action_unmute">Unmute</string>
+  <string name="clippy_notification_action_mute">Mute</string>
+  <string name="clippy_notification_action_quit">Quit</string>
+  <string name="clippy_notification_content">Revenge of the paperclip</string>
+
+  <string name="clippy_settings_autostart_title">Autostart</string>
+  <string name="clippy_settings_animation_frequency">Animation frequency</string>
+  <string name="clippy_settings_animation_dialog_text">Please select</string>
+
+  <string name="clippy_setting_animation_often">Often</string>
+  <string name="clippy_setting_animation_normal">Normal</string>
+  <string name="clippy_setting_animation_seldom">Seldom</string>
+
+  <string name="clippy_setting_header_misc">Misc</string>
+  <string name="clippy_setting_contact">Contact</string>
+  <string name="clippy_setting_version">Version</string>
+  <string name="clippy_setting_credits">Credits</string>
 </resources>
