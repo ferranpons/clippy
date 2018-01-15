@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="clippy_settings_animation_often_id">o</string>
+    <string name="clippy_settings_animation_normal_id">n</string>
+    <string name="clippy_settings_animation_seldom_id">s</string>
+
+    <string name="clippy_content_description_agent_picture">Agent picture</string>
+</resources>

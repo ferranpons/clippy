@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="clippy_settings_animation_gap_id">
+        <item>@string/clippy_settings_animation_often_id</item>
+        <item>@string/clippy_settings_animation_normal_id</item>
+        <item>@string/clippy_settings_animation_seldom_id</item>
+    </array>
+
+    <array name="clippy_settings_animation_gap">
+        <item>@string/clippy_setting_animation_often</item>
+        <item>@string/clippy_setting_animation_normal</item>
+        <item>@string/clippy_setting_animation_seldom</item>
+    </array>
+
+</resources>
