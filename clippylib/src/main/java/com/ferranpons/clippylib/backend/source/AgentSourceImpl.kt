@@ -13,18 +13,14 @@ import com.ferranpons.clippylib.model.raw.Agent
 
 class AgentSourceImpl : AgentSource {
 
-    private val objectMapper: ObjectMapper
-
-    init {
-        this.objectMapper = ObjectMapper()
-    }
+    private val objectMapper: ObjectMapper = ObjectMapper()
 
     override fun getAgent(context: Context, agentType: AgentType): O<Agent> {
-        try {
+        return try {
             val open = context.assets.open(agentType.assetName)
-            return O(objectMapper.readValue<Agent>(open, Agent::class.java))
+            O(objectMapper.readValue<Agent>(open, Agent::class.java))
         } catch (e: IOException) {
-            return O(e.localizedMessage)
+            O(e.localizedMessage)
         }
 
     }

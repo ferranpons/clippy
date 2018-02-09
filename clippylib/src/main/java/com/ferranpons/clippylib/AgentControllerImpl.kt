@@ -7,7 +7,7 @@ import android.media.MediaPlayer
 import android.os.AsyncTask
 import android.os.Handler
 import android.support.v4.content.ContextCompat
-import android.view.View
+import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -52,8 +52,8 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
 
     private val animationDelay: Long
         get() {
-            val animationPause = Global.INSTANCE.settingsStorage?.animationPause
-            return animationPause?.randomPause?.toLong()!!
+            val animationPause = Global.INSTANCE.settingsStorage.animationPause
+            return animationPause.randomPause.toLong()
         }
 
     private val loadAgentData = @SuppressLint("StaticFieldLeak")
@@ -68,9 +68,7 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
         }
     }
 
-
     init {
-
         initView()
         loadAgentData.execute(agentType)
     }
@@ -80,7 +78,7 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
         stop(false)
         this.isKilled = true
         this.floatingView.kill()
-        Global.INSTANCE.agentStorage?.isAgentStop = false
+        Global.INSTANCE.agentStorage.isAgentStop = false
     }
 
     override fun stop(user: Boolean) {
@@ -88,7 +86,7 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
 
         // if agent stopped by user .. stop agent and save state
         if (user) {
-            Global.INSTANCE.agentStorage?.isAgentStop = true
+            Global.INSTANCE.agentStorage.isAgentStop = true
         }
 
         animationIsRunning.set(false)
@@ -119,9 +117,9 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
                 user, stoppedByUser
         )
 
-        if (user || !user && !stoppedByUser!!) {
+        if (user || !user && !stoppedByUser) {
             Timber.d("Starting agent")
-            Global.INSTANCE.agentStorage?.isAgentStop = false
+            Global.INSTANCE.agentStorage.isAgentStop = false
 
             if (animationIsRunning.compareAndSet(false, true)) {
                 handler.post(animationRunnable)

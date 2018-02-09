@@ -2,21 +2,16 @@ package com.ferranpons.clippylib
 
 import java.util.Random
 
-enum class AnimationPause private constructor(val settingsValue: String, val basePause: Int) {
+enum class AnimationPause(val settingsValue: String, private val basePause: Int) {
 
     Seldom("s", 30000),
     Normal("n", 5000),
     Often("o", 1000);
 
-    private val random: Random
+    private val random: Random = Random()
 
     val randomPause: Int
         get() = random.nextInt(basePause) + basePause
-
-
-    init {
-        this.random = Random()
-    }
 
     companion object {
 

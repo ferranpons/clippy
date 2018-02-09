@@ -23,8 +23,8 @@ class DeviceUnlock : BroadcastReceiver() {
             context.startService(IntentHelper.getStartStopIntent(context, FloatingService.Command.Stop, false))
 
         } else if (Intent.ACTION_BOOT_COMPLETED == intent.action) {
-            val lastUsedAgent = Global.INSTANCE.agentStorage?.lastUsedAgent
-            val startOnBoot = Global.INSTANCE.settingsStorage?.isSettingsStartOnBoot
+            val lastUsedAgent = Global.INSTANCE.agentStorage.lastUsedAgent
+            val startOnBoot = Global.INSTANCE.settingsStorage.isSettingsStartOnBoot
             Timber.d("Device boot completed - Starting agent - Agent: %s, startOnBoot: %s", lastUsedAgent, startOnBoot)
 
             if (startOnBoot!!) {

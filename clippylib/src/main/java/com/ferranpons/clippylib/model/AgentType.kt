@@ -2,13 +2,11 @@ package com.ferranpons.clippylib.model
 
 import com.ferranpons.clippylib.backend.converter.mapping.*
 
-enum class AgentType private constructor(val assetName: String, val agentMapping: AgentMapping, val isBroken: Boolean) {
+enum class AgentType(val assetName: String, val agentMapping: AgentMapping) {
 
-    CLIPPY("agent_clippy.json", ClippyMapping(), false);
-
+    CLIPPY("agent_clippy.json", ClippyMapping());
 
     companion object {
-
-        val KEY = "extra_agent_type"
+        const val KEY = "extra_agent_type"
     }
 }
