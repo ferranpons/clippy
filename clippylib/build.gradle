@@ -8,7 +8,6 @@ version = "${versionMajor}.${versionMinor}.${versionPatch}"
 
 android {
   compileSdkVersion 27
-  buildToolsVersion '27.0.2'
   resourcePrefix 'clippy_'
 
   defaultConfig {
@@ -51,7 +50,7 @@ android {
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-  implementation "org.jetbrains.kotlin:kotlin-reflect:1.2.10"
+  implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
   def supportVersion = '27.0.2'
   implementation "com.android.support:appcompat-v7:$supportVersion"
@@ -60,8 +59,8 @@ dependencies {
   implementation "com.android.support:cardview-v7:$supportVersion"
 
   implementation "com.jakewharton.timber:timber:3.1.0"
-  implementation "com.fasterxml.jackson.core:jackson-databind:2.8.9"
-  implementation "com.fasterxml.jackson.core:jackson-annotations:2.8.9"
+  implementation "com.fasterxml.jackson.core:jackson-databind:2.9.3"
+  implementation "com.fasterxml.jackson.core:jackson-annotations:2.9.0"
 
   testImplementation 'junit:junit:4.12'
   androidTestImplementation 'com.android.support.test:runner:1.0.1'
@@ -82,7 +81,7 @@ twitterPlugin {
   consumerSecret = System.getenv()['TWITTER_API_SECRET']
   accessToken = System.getenv()['TWITTER_ACCESS_TOKEN']
   accessTokenSecret = System.getenv()['TWITTER_ACCESS_TOKEN_SECRET']
-  message = "New Clippy Android Library version ${versionMajor}.${versionMinor}.${versionPatch} available for download. Check out the details at https://github.com/ferranpons/clippy"
+  message = "New Clippy Android Library version ${versionMajor}.${versionMinor}.${versionPatch} available for download. Check out the details at https://github.com/ferranpons/klippy"
 }
 repositories {
   mavenCentral()

@@ -1,5 +1,6 @@
 package com.ferranpons.clippylib
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.ferranpons.clippylib.backend.AgentService
 import com.ferranpons.clippylib.backend.AgentServiceImpl
@@ -12,14 +13,15 @@ import java.lang.RuntimeException
 
 
 enum class Global {
+    @SuppressLint("StaticFieldLeak")
     INSTANCE;
 
-    private var agentSource: AgentSource? = null
-    internal var agentService: AgentService? = null
-    internal var agentStorage: AgentStorage? = null
-    internal var settingsStorage: SettingsStorage? = null
-    internal var logTree: Timber.Tree? = null
-    private var context: Context? = null
+    private lateinit var agentSource: AgentSource
+    internal lateinit var agentService: AgentService
+    internal lateinit var agentStorage: AgentStorage
+    internal lateinit var settingsStorage: SettingsStorage
+    internal lateinit var logTree: Timber.Tree
+    private lateinit var context: Context
     private var init = false
 
 
@@ -32,7 +34,7 @@ enum class Global {
     fun init(context: Context) {
         this.context = context
         this.agentSource = AgentSourceImpl()
-        this.agentService = AgentServiceImpl(agentSource!!)
+        this.agentService = AgentServiceImpl(agentSource)
         this.agentStorage = AgentStorage(context)
         this.settingsStorage = SettingsStorage(context)
 

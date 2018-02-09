@@ -12,6 +12,8 @@ import android.view.WindowManager
 import android.widget.FrameLayout
 
 import timber.log.Timber
+import android.os.Build
+
 
 class FloatingView(context: Context) : FrameLayout(context), View.OnTouchListener {
 
@@ -29,32 +31,26 @@ class FloatingView(context: Context) : FrameLayout(context), View.OnTouchListene
     private var killed = false
 
     init {
-
         this.gestureDetector = GestureDetector(context, GestureListener())
         this.windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
+        val layoutFlag: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+        } else {
+            WindowManager.LayoutParams.TYPE_PHONE
+        }
+
         this.layoutParams = WindowManager.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                layoutFlag,
+                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            layoutParams.type = WindowManager.LayoutParams.TYPE_TOAST
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            layoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-        }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
-        {
-            layoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
-        }
 
         this.layoutParams.gravity = Gravity.CENTER
 
         this.setOnTouchListener(this)
 
-        //this.windowManager.addView(this, layoutParams)
+        this.windowManager.addView(this, layoutParams)
     }
 
     fun kill() {
