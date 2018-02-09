@@ -52,8 +52,8 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
 
     private val animationDelay: Long
         get() {
-            val animationPause = Global.INSTANCE.settingsStorage?.animationPause
-            return animationPause?.randomPause?.toLong()!!
+            val animationPause = Global.INSTANCE.settingsStorage.animationPause
+            return animationPause.randomPause.toLong()
         }
 
     private val loadAgentData = @SuppressLint("StaticFieldLeak")
@@ -117,9 +117,9 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
                 user, stoppedByUser
         )
 
-        if (user || !user && !stoppedByUser!!) {
+        if (user || !user && !stoppedByUser) {
             Timber.d("Starting agent")
-            Global.INSTANCE.agentStorage?.isAgentStop = false
+            Global.INSTANCE.agentStorage.isAgentStop = false
 
             if (animationIsRunning.compareAndSet(false, true)) {
                 handler.post(animationRunnable)

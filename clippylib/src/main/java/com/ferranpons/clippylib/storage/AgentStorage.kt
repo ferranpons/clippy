@@ -17,7 +17,7 @@ class AgentStorage(context: Context) {
 
     val lastUsedAgent: AgentType
         get() {
-            val agentString = sharedPreferences.getString(AGENT_LAST_USED, AGENT_LAST_USED_DEFAUlT.name)
+            val agentString = sharedPreferences.getString(AGENT_LAST_USED, AGENT_LAST_USED_DEFAULT.name)
             return AgentType.valueOf(agentString)
         }
 
@@ -39,16 +39,16 @@ class AgentStorage(context: Context) {
 
     companion object {
 
-        private val NAME = "agent_storage"
+        private const val NAME = "agent_storage"
 
-        private val AGENT_MUTE = "agent_mute"
-        private val AGENT_MUTE_DEFAULT = false
+        private const val AGENT_MUTE = "agent_mute"
+        private const val AGENT_MUTE_DEFAULT = false
 
-        private val AGENT_STOP = "agent_stop"
-        private val AGENT_STOP_DEFAULT = false
+        private const val AGENT_STOP = "agent_stop"
+        private const val AGENT_STOP_DEFAULT = false
 
-        private val AGENT_LAST_USED = "agent_lastused"
-        private val AGENT_LAST_USED_DEFAUlT = AgentType.CLIPPY
+        private const val AGENT_LAST_USED = "agent_lastused"
+        private val AGENT_LAST_USED_DEFAULT = AgentType.CLIPPY
     }
 
 }

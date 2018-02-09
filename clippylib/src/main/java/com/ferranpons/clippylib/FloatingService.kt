@@ -18,13 +18,12 @@ class FloatingService : Service() {
 
     private val mBinder = LocalBinder()
     private var agentController: AgentController? = null
-
     private var mReceiver: BroadcastReceiver? = null
 
     private val agentControllerListener = object : AgentControllerListener {
         override fun volumeChanged(mute: Boolean) {
             Timber.d("AgentControllerListener mute: %s", mute)
-            Global.INSTANCE.agentStorage?.isMute = mute
+            Global.INSTANCE.agentStorage.isMute = mute
             sendAgentState()
         }
 
@@ -49,10 +48,10 @@ class FloatingService : Service() {
             when (command) {
                 FloatingService.Command.Show -> if (agentController == null) {
                     val agentType = intent.getSerializableExtra(AgentType.KEY) as AgentType
-                    Global.INSTANCE.agentStorage?.setAgentLastUsed(agentType)
+                    Global.INSTANCE.agentStorage.setAgentLastUsed(agentType)
 
-                    this.agentController = AgentControllerImpl(agentType, applicationContext, Global.INSTANCE.agentService!!)
-                    if (Global.INSTANCE.agentStorage?.isMute!!) {
+                    this.agentController = AgentControllerImpl(agentType, applicationContext, Global.INSTANCE.agentService)
+                    if (Global.INSTANCE.agentStorage.isMute) {
                         agentController!!.mute()
                     } else {
                         agentController!!.unMute()

@@ -17,11 +17,7 @@ import com.ferranpons.clippylib.model.raw.Frame
 
 class AgentConverterImpl(agentType: AgentType) : AgentConverter {
 
-    private val agentMapping: AgentMapping
-
-    init {
-        this.agentMapping = agentType.agentMapping
-    }
+    private val agentMapping: AgentMapping = agentType.agentMapping
 
     override fun agentToUiAgent(agent: Agent): UiAgent {
         return UiAgent(
@@ -46,18 +42,16 @@ class AgentConverterImpl(agentType: AgentType) : AgentConverter {
     }
 
     private fun convertAnimation(animation: Animation, agent: Agent): UiAnimation {
-        val uiAnimationList = ArrayList<UiFrame>()
 
         val frames = animation.frames
-        for (frame in frames) {
-            val uiFrame = UiFrame(
-                    frame.duration,
-                    convertImageListToId(frame.images, agent),
-                    frame.exitBranch,
-                    convertBranchingToUiBranches(frame.branching),
-                    if (frame.sound != null) agentMapping.soundMapping[frame.sound - 1] else null
+        val uiAnimationList = frames.map {
+            UiFrame(
+                    it.duration,
+                    convertImageListToId(it.images, agent),
+                    it.exitBranch,
+                    convertBranchingToUiBranches(it.branching),
+                    if (it.sound != null) agentMapping.soundMapping[it.sound - 1] else null
             )
-            uiAnimationList.add(uiFrame)
         }
 
         return UiAnimation(uiAnimationList)
@@ -69,11 +63,8 @@ class AgentConverterImpl(agentType: AgentType) : AgentConverter {
             return null
         }
 
-        val uiBranches = ArrayList<UiBranch>()
         val branches = branching.branches
-        for (branch in branches) {
-            uiBranches.add(UiBranch(branch.frameIndex, branch.weight))
-        }
+        val uiBranches = branches.map { UiBranch(it.frameIndex, it.weight) }
 
         return uiBranches
     }
@@ -87,18 +78,15 @@ class AgentConverterImpl(agentType: AgentType) : AgentConverter {
             return emptyFrame
         }
 
-        val result = ArrayList<Int>()
-
-        for (imagePos in lists) {
-            result.add(
-                    imagePositionToId(
-                            getFrameWidth(agent),
-                            getFrameHeight(agent),
-                            agentMapping.numberColumns,
-                            agentMapping.numberRows,
-                            imagePos[0],
-                            imagePos[1]
-                    )!!)
+        val result = lists.mapTo(ArrayList()) {
+            imagePositionToId(
+                    getFrameWidth(agent),
+                    getFrameHeight(agent),
+                    agentMapping.numberColumns,
+                    agentMapping.numberRows,
+                    it[0],
+                    it[1]
+            )!!
         }
 
         while (result.size < agent.overlayCount) {
