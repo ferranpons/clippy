@@ -5,7 +5,7 @@ import java.util.Locale
 object StringUtils {
 
     fun isValid(string: String?): Boolean {
-        return string != null && string.length > 0
+        return string != null && string.isNotEmpty()
     }
 
     fun capitalize(line: String): String {

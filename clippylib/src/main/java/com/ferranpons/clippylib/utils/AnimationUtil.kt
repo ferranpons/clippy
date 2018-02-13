@@ -14,7 +14,7 @@ import com.ferranpons.clippylib.model.gui.UiFrame
 
 object AnimationUtil {
 
-    private val MAX_BRANCHES = 5
+    private const val MAX_BRANCHES = 5
 
     fun getAnimationDrawable(context: Context, uiAnimation: UiAnimation, numberOverlays: Int): AnimationDrawableResult {
         val uiFrames = getUiFrames(uiAnimation.uiFrames)

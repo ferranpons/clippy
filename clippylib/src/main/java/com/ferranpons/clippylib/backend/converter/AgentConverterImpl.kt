@@ -11,9 +11,7 @@ import com.ferranpons.clippylib.model.gui.UiBranch
 import com.ferranpons.clippylib.model.gui.UiFrame
 import com.ferranpons.clippylib.model.raw.Agent
 import com.ferranpons.clippylib.model.raw.Animation
-import com.ferranpons.clippylib.model.raw.Branch
 import com.ferranpons.clippylib.model.raw.Branching
-import com.ferranpons.clippylib.model.raw.Frame
 
 class AgentConverterImpl(agentType: AgentType) : AgentConverter {
 
@@ -35,7 +33,7 @@ class AgentConverterImpl(agentType: AgentType) : AgentConverter {
 
         for (key in animationMap.keys) {
             val animation = animationMap[key]
-            uiAnimationMap.put(key, convertAnimation(animation!!, agent))
+            uiAnimationMap[key] = convertAnimation(animation!!, agent)
         }
 
         return uiAnimationMap
@@ -64,9 +62,8 @@ class AgentConverterImpl(agentType: AgentType) : AgentConverter {
         }
 
         val branches = branching.branches
-        val uiBranches = branches.map { UiBranch(it.frameIndex, it.weight) }
 
-        return uiBranches
+        return branches.map { UiBranch(it.frameIndex, it.weight) }
     }
 
     private fun convertImageListToId(lists: List<List<Int>>?, agent: Agent): List<Int> {

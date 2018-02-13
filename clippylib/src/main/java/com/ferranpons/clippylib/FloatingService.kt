@@ -146,22 +146,22 @@ class FloatingService : Service() {
 
         companion object {
 
-            val KEY = "COMMAND"
+            const val KEY = "COMMAND"
         }
     }
 
     companion object {
 
-        val AGENT_STATE_ACTION = "com.ferranpons.clippylib.AGENT_STATE"
-        val AGENT_STATE_MUTE = "agent_state_mute"
-        val AGENT_STATE_STARTED = "agent_state_started"
-        val AGENT_STATE_RUNNING = "agent_state_running"
-        val AGENT_STATE_TYPE = "agent_state_type"
+        const val AGENT_STATE_ACTION = "com.ferranpons.clippylib.AGENT_STATE"
+        const val AGENT_STATE_MUTE = "agent_state_mute"
+        const val AGENT_STATE_STARTED = "agent_state_started"
+        const val AGENT_STATE_RUNNING = "agent_state_running"
+        const val AGENT_STATE_TYPE = "agent_state_type"
 
-        val AGENT_ACTION_USER = "extra_agent_user"
-        val AGENT_ACTION_USER_DEFAULT = false
+        const val AGENT_ACTION_USER = "extra_agent_user"
+        const val AGENT_ACTION_USER_DEFAULT = false
 
-        private val NOTIFICATION_ID = 14232
+        private const val NOTIFICATION_ID = 14232
     }
 
 }

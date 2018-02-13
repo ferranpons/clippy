@@ -92,11 +92,9 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
         animationIsRunning.set(false)
         handler.removeCallbacks(animationRunnable)
 
-        for (imageView in imageLayer!!) {
-            if (imageView.background != null && imageView.background is AnimationDrawable) {
-                (imageView.background as AnimationDrawable).stop()
-            }
-        }
+        imageLayer!!
+                .filter { it.background != null && it.background is AnimationDrawable }
+                .forEach { (it.background as AnimationDrawable).stop() }
 
         resetImages()
 

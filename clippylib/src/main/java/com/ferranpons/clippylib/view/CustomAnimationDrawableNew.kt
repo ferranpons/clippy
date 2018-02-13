@@ -10,9 +10,7 @@ abstract class CustomAnimationDrawableNew(aniDrawable: AnimationDrawable) : Anim
     private val totalDuration: Int
         get() {
 
-            val iDuration = (0 until this.numberOfFrames).sumBy { this.getDuration(it) }
-
-            return iDuration
+            return (0 until numberOfFrames).sumBy { getDuration(it) }
         }
 
     init {

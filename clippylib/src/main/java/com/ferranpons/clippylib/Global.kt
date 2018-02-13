@@ -20,7 +20,7 @@ enum class Global {
     internal lateinit var agentService: AgentService
     internal lateinit var agentStorage: AgentStorage
     internal lateinit var settingsStorage: SettingsStorage
-    internal lateinit var logTree: Timber.Tree
+    private lateinit var logTree: Timber.Tree
     private lateinit var context: Context
     private var init = false
 
