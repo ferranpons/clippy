@@ -171,7 +171,7 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
             for (i in 0 until agent.overlayCount) {
                 val imageView = ImageView(context)
                 imageLayer!!.add(imageView)
-                frameLayout!!.addView(imageView)
+                frameLayout.addView(imageView)
             }
 
             progressBar!!.visibility = View.GONE
