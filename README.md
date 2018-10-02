@@ -7,9 +7,11 @@ Clippy
 
 *Library for Android*
 
-[![Build Status](https://travis-ci.org/ferranpons/twitter-gradle-plugin.svg?branch=master)](https://travis-ci.org/ferranpons/clippy)
+[![Build Status](https://travis-ci.org/ferranpons/klippy.svg?branch=master)](https://travis-ci.org/ferranpons/klippy)
 
 Shows the Office Assistant (Clippy) like as a floating action button similar to the Facebook Messenger floating chat bubble.
+
+Based on the [Clippy for Android](https://github.com/schlan/Clippy) app by [schlan](https://github.com/schlan).
 
 <br/><br/>
 <p align="center">
@@ -59,7 +61,7 @@ Contribute
 ----------
 
 1. Create an issue to discuss about your idea
-2. [Fork it] (https://github.com/ferranpons/twitter-gradle-plugin/fork)
+2. [Fork it] (https://github.com/ferranpons/klippy/fork)
 3. Create your feature branch (`git checkout -b my-new-feature`)
 4. Commit your changes (`git commit -am 'Add some feature'`)
 5. Push to the branch (`git push origin my-new-feature`)
@@ -70,7 +72,7 @@ Contribute
 Bugs and Feedback
 -----------------
 
-For bugs, questions and discussions please use the [Github Issues](https://github.com/ferranpons/twitter-gradle-plugin/issues).
+For bugs, questions and discussions please use the [Github Issues](https://github.com/ferranpons/klippy/issues).
 
 
 License
