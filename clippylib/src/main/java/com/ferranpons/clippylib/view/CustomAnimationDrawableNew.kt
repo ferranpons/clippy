@@ -5,14 +5,12 @@ import android.os.Handler
 
 abstract class CustomAnimationDrawableNew(aniDrawable: AnimationDrawable) : AnimationDrawable() {
 
-    private var mAnimationHandler: Handler? = null
+    private var animationHandler: Handler? = null
 
     private val totalDuration: Int
         get() {
 
-            val iDuration = (0 until this.numberOfFrames).sumBy { this.getDuration(it) }
-
-            return iDuration
+            return (0 until numberOfFrames).sumBy { getDuration(it) }
         }
 
     init {
@@ -24,8 +22,8 @@ abstract class CustomAnimationDrawableNew(aniDrawable: AnimationDrawable) : Anim
 
     override fun start() {
         super.start()
-        mAnimationHandler = Handler()
-        mAnimationHandler!!.postDelayed({ onAnimationFinish() }, totalDuration.toLong())
+        animationHandler = Handler()
+        animationHandler!!.postDelayed({ onAnimationFinish() }, totalDuration.toLong())
 
     }
 

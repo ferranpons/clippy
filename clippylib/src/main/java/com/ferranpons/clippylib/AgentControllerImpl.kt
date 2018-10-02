@@ -92,11 +92,9 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
         animationIsRunning.set(false)
         handler.removeCallbacks(animationRunnable)
 
-        for (imageView in imageLayer!!) {
-            if (imageView.background != null && imageView.background is AnimationDrawable) {
-                (imageView.background as AnimationDrawable).stop()
-            }
-        }
+        imageLayer!!
+                .filter { it.background != null && it.background is AnimationDrawable }
+                .forEach { (it.background as AnimationDrawable).stop() }
 
         resetImages()
 
@@ -173,7 +171,7 @@ class AgentControllerImpl(override val agentType: AgentType, private val context
             for (i in 0 until agent.overlayCount) {
                 val imageView = ImageView(context)
                 imageLayer!!.add(imageView)
-                frameLayout!!.addView(imageView)
+                frameLayout.addView(imageView)
             }
 
             progressBar!!.visibility = View.GONE

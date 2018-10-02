@@ -16,9 +16,9 @@ import timber.log.Timber
 
 class FloatingService : Service() {
 
-    private val mBinder = LocalBinder()
+    private val localBinder = LocalBinder()
     private var agentController: AgentController? = null
-    private var mReceiver: BroadcastReceiver? = null
+    private var broadcastReceiver: BroadcastReceiver? = null
 
     private val agentControllerListener = object : AgentControllerListener {
         override fun volumeChanged(mute: Boolean) {
@@ -120,19 +120,19 @@ class FloatingService : Service() {
         Timber.d("Register BroadcastListener - DeviceUnlock")
         val filter = IntentFilter(Intent.ACTION_SCREEN_ON)
         filter.addAction(Intent.ACTION_SCREEN_OFF)
-        this.mReceiver = DeviceUnlock()
-        registerReceiver(mReceiver, filter)
+        this.broadcastReceiver = DeviceUnlock()
+        registerReceiver(broadcastReceiver, filter)
     }
 
     private fun unregisterBroadcastListener() {
-        if (mReceiver != null) {
+        if (broadcastReceiver != null) {
             Timber.d("Unregister BroadcastListener - DeviceUnlock")
-            unregisterReceiver(mReceiver)
+            unregisterReceiver(broadcastReceiver)
         }
     }
 
     override fun onBind(intent: Intent): IBinder? {
-        return mBinder
+        return localBinder
     }
 
     inner class LocalBinder : Binder() {
@@ -146,22 +146,22 @@ class FloatingService : Service() {
 
         companion object {
 
-            val KEY = "COMMAND"
+            const val KEY = "COMMAND"
         }
     }
 
     companion object {
 
-        val AGENT_STATE_ACTION = "com.ferranpons.clippylib.AGENT_STATE"
-        val AGENT_STATE_MUTE = "agent_state_mute"
-        val AGENT_STATE_STARTED = "agent_state_started"
-        val AGENT_STATE_RUNNING = "agent_state_running"
-        val AGENT_STATE_TYPE = "agent_state_type"
+        const val AGENT_STATE_ACTION = "com.ferranpons.clippylib.AGENT_STATE"
+        const val AGENT_STATE_MUTE = "agent_state_mute"
+        const val AGENT_STATE_STARTED = "agent_state_started"
+        const val AGENT_STATE_RUNNING = "agent_state_running"
+        const val AGENT_STATE_TYPE = "agent_state_type"
 
-        val AGENT_ACTION_USER = "extra_agent_user"
-        val AGENT_ACTION_USER_DEFAULT = false
+        const val AGENT_ACTION_USER = "extra_agent_user"
+        const val AGENT_ACTION_USER_DEFAULT = false
 
-        private val NOTIFICATION_ID = 14232
+        private const val NOTIFICATION_ID = 14232
     }
 
 }

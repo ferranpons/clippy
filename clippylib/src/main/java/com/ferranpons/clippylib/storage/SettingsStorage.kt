@@ -30,12 +30,12 @@ class SettingsStorage(context: Context) {
 
     companion object {
 
-        val NAME = "settings_storage"
+        const val NAME = "settings_storage"
 
-        private val SETTINGS_START_ON_BOOT = "settings_start_boot"
-        private val SETTINGS_START_ON_BOOT_DEFAULT = false
+        private const val SETTINGS_START_ON_BOOT = "settings_start_boot"
+        private const val SETTINGS_START_ON_BOOT_DEFAULT = false
 
-        val SETTINGS_ANIMATION_PAUSE = "settings_animation_pause"
+        const val SETTINGS_ANIMATION_PAUSE = "settings_animation_pause"
         val SETTINGS_ANIMATION_PAUSE_DEFAULT = AnimationPause.Normal.settingsValue
     }
 
