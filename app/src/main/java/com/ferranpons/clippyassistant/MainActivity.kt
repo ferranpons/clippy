@@ -3,7 +3,6 @@ package com.ferranpons.clippyassistant
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.widget.Button
 import com.ferranpons.clippylib.model.AgentType
 import com.ferranpons.clippylib.utils.IntentHelper
@@ -16,6 +15,7 @@ import android.os.Handler
 import android.provider.Settings
 import com.ferranpons.clippylib.FloatingService
 import com.ferranpons.clippylib.Global
+import timber.log.Timber
 
 
 private const val REQUEST_CODE = 145
@@ -63,12 +63,12 @@ class MainActivity : AppCompatActivity() {
         override fun onReceive(context: Context, intent: Intent) {
             if (intent.action == FloatingService.AGENT_STATE_ACTION) {
                 val isRunning = intent.getBooleanExtra(FloatingService.AGENT_STATE_RUNNING, false)
-                Log.d("****** CLIPPY","AgentStateBroadcastReceiver called - isRunning: {$isRunning}")
+                Timber.d("****** CLIPPY - AgentStateBroadcastReceiver called - isRunning: {$isRunning}")
 
                 if (isRunning) {
                     val mute = intent.getBooleanExtra(FloatingService.AGENT_STATE_MUTE, false)
                     val started = intent.getBooleanExtra(FloatingService.AGENT_STATE_STARTED, false)
-                    Log.d("****** CLIPPY", "AgentStateBroadcastReceiver called - mute: {$mute}, started: {$started}")
+                    Timber.d("****** CLIPPY - AgentStateBroadcastReceiver called - mute: {$mute}, started: {$started}")
                 }
             }
         }

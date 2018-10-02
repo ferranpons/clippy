@@ -16,9 +16,9 @@ import timber.log.Timber
 
 class FloatingService : Service() {
 
-    private val mBinder = LocalBinder()
+    private val localBinder = LocalBinder()
     private var agentController: AgentController? = null
-    private var mReceiver: BroadcastReceiver? = null
+    private var broadcastReceiver: BroadcastReceiver? = null
 
     private val agentControllerListener = object : AgentControllerListener {
         override fun volumeChanged(mute: Boolean) {
@@ -120,19 +120,19 @@ class FloatingService : Service() {
         Timber.d("Register BroadcastListener - DeviceUnlock")
         val filter = IntentFilter(Intent.ACTION_SCREEN_ON)
         filter.addAction(Intent.ACTION_SCREEN_OFF)
-        this.mReceiver = DeviceUnlock()
-        registerReceiver(mReceiver, filter)
+        this.broadcastReceiver = DeviceUnlock()
+        registerReceiver(broadcastReceiver, filter)
     }
 
     private fun unregisterBroadcastListener() {
-        if (mReceiver != null) {
+        if (broadcastReceiver != null) {
             Timber.d("Unregister BroadcastListener - DeviceUnlock")
-            unregisterReceiver(mReceiver)
+            unregisterReceiver(broadcastReceiver)
         }
     }
 
     override fun onBind(intent: Intent): IBinder? {
-        return mBinder
+        return localBinder
     }
 
     inner class LocalBinder : Binder() {

@@ -5,7 +5,7 @@ import android.os.Handler
 
 abstract class CustomAnimationDrawableNew(aniDrawable: AnimationDrawable) : AnimationDrawable() {
 
-    private var mAnimationHandler: Handler? = null
+    private var animationHandler: Handler? = null
 
     private val totalDuration: Int
         get() {
@@ -22,8 +22,8 @@ abstract class CustomAnimationDrawableNew(aniDrawable: AnimationDrawable) : Anim
 
     override fun start() {
         super.start()
-        mAnimationHandler = Handler()
-        mAnimationHandler!!.postDelayed({ onAnimationFinish() }, totalDuration.toLong())
+        animationHandler = Handler()
+        animationHandler!!.postDelayed({ onAnimationFinish() }, totalDuration.toLong())
 
     }
 
