@@ -7,12 +7,12 @@ group = 'com.ferranpons.clippylib'
 version = "${versionMajor}.${versionMinor}.${versionPatch}"
 
 android {
-  compileSdkVersion 29
+  compileSdkVersion 28
   resourcePrefix 'clippy_'
 
   defaultConfig {
     minSdkVersion 21
-    targetSdkVersion 29
+    targetSdkVersion 28
     versionCode 1
     versionName "1.0"
 
