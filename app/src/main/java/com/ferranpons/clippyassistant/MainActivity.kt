@@ -2,7 +2,7 @@ package com.ferranpons.clippyassistant
 
 import android.content.BroadcastReceiver
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import com.ferranpons.clippylib.model.AgentType
 import com.ferranpons.clippylib.utils.IntentHelper

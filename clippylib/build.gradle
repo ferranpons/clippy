@@ -1,22 +1,22 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'twitter-gradle-plugin'
+//apply plugin: 'twitter-gradle-plugin'
 //apply plugin: 'com.novoda.bintray-release'
 
 group = 'com.ferranpons.clippylib'
 version = "${versionMajor}.${versionMinor}.${versionPatch}"
 
 android {
-  compileSdkVersion 28
+  compileSdkVersion 29
   resourcePrefix 'clippy_'
 
   defaultConfig {
     minSdkVersion 21
-    targetSdkVersion 28
+    targetSdkVersion 29
     versionCode 1
     versionName "1.0"
 
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     consumerProguardFiles 'lib-proguard-rules.txt'
     vectorDrawables.useSupportLibrary = true
   }
@@ -53,18 +53,18 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
   def supportVersion = '28.0.0'
-  implementation "com.android.support:appcompat-v7:$supportVersion"
-  implementation "com.android.support:design:$supportVersion"
-  implementation "com.android.support:recyclerview-v7:$supportVersion"
-  implementation "com.android.support:cardview-v7:$supportVersion"
+  implementation 'androidx.appcompat:appcompat:1.1.0'
+  implementation 'com.google.android.material:material:1.0.0'
+  implementation 'androidx.recyclerview:recyclerview:1.0.0'
+  implementation 'androidx.cardview:cardview:1.0.0'
 
   implementation "com.jakewharton.timber:timber:4.7.1"
-  implementation "com.fasterxml.jackson.core:jackson-databind:2.9.3"
+  implementation "com.fasterxml.jackson.core:jackson-databind:2.9.5"
   implementation "com.fasterxml.jackson.core:jackson-annotations:2.9.0"
 
   testImplementation 'junit:junit:4.12'
-  androidTestImplementation 'com.android.support.test:runner:1.0.2'
-  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+  androidTestImplementation 'androidx.test:runner:1.2.0'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 /*
 publish {
@@ -74,7 +74,7 @@ publish {
   publishVersion = "${versionMajor}.${versionMinor}.${versionPatch}"
   desc = 'Android library that help you create an Office Assistant (Clippy)'
   website = 'https://github.com/ferranpons'
-}*/
+}
 
 twitterPlugin {
   consumerKey = System.getenv()['TWITTER_API_KEY']
@@ -82,7 +82,7 @@ twitterPlugin {
   accessToken = System.getenv()['TWITTER_ACCESS_TOKEN']
   accessTokenSecret = System.getenv()['TWITTER_ACCESS_TOKEN_SECRET']
   message = "New Clippy Android Library version ${versionMajor}.${versionMinor}.${versionPatch} available for download. Check out the details at https://github.com/ferranpons/klippy"
-}
+}*/
 repositories {
   mavenCentral()
 }

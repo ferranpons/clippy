@@ -3,7 +3,7 @@ package com.ferranpons.clippylib.utils
 import android.content.Context
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.Drawable
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 
 import java.util.ArrayList
 import java.util.Random
