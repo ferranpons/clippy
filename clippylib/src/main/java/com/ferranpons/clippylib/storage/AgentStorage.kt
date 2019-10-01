@@ -18,7 +18,7 @@ class AgentStorage(context: Context) {
     val lastUsedAgent: AgentType
         get() {
             val agentString = sharedPreferences.getString(AGENT_LAST_USED, AGENT_LAST_USED_DEFAULT.name)
-            return AgentType.valueOf(agentString)
+            return AgentType.valueOf(agentString!!)
         }
 
     var isAgentStop: Boolean
