@@ -6,7 +6,7 @@ import android.graphics.drawable.AnimationDrawable
 import android.media.MediaPlayer
 import android.os.AsyncTask
 import android.os.Handler
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
